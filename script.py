@@ -9,12 +9,12 @@ API_KEY = os.getenv('API_KEY')
 ENDPOINT_URL = "https://llm.lab.sspcloud.fr/api/v1/"
 MODEL = "model-vince"
 
-TEST_MODE = True 
+TEST_MODE = False 
 LIMIT_TEST = 10 
 
 client = OpenAI(api_key=API_KEY, base_url=ENDPOINT_URL, timeout=120.0)
 
-def load_system_prompt(filename="system_prompt.md"):
+def load_system_prompt(filename="nace-llm-review/system_prompt.md"):
     if os.path.exists(filename):
         with open(filename, "r", encoding="utf-8") as f:
             return f.read()
@@ -109,7 +109,7 @@ Return the result in the required JSON format."""
 
     # Exportation finale
     df_final = pd.DataFrame(results)
-    output_name = "nace_audit_test.csv" if TEST_MODE else "nace_audit_full.csv"
+    output_name = "nace_audit_test.csv" if TEST_MODE else "nace_index_audit.csv"
     df_final.to_csv(output_name, index=False, sep=';', encoding='utf-8-sig')
     print(f"\nTerminé ! Fichier : {output_name}")
 
