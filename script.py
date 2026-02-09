@@ -9,7 +9,7 @@ API_KEY = os.getenv('API_KEY')
 ENDPOINT_URL = "https://llm.lab.sspcloud.fr/api/v1/"
 MODEL = "model-vince"
 
-TEST_MODE = True 
+TEST_MODE = False 
 LIMIT_TEST = 50 
 
 # Initialisation du client compatible OpenAI
